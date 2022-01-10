@@ -2638,6 +2638,11 @@ input.searchbox:focus {
 .section-wrap.intro {
   padding: 170px 0 150px; }
 
+/* Modified intro section
+-------------------------------------------------------*/
+.section-wrap.mainintro {
+  padding: 130px 0 30px; }
+
 .intro.style-2 .intro-text p {
   font-size: 50px;
   font-weight: 700;
@@ -2757,7 +2762,7 @@ blockquote > span {
 .highlight {
   padding: 3px 5px;
   color: #fff;
-  background-color: #bfa67a; }
+  background-color: var(--main-highlight-color); }
 
 .bullets li,
 .arrows li,

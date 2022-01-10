@@ -129,7 +129,7 @@
     background-color: transparent;
   }
   .navbar-nav .open .dropdown-menu > li > a:hover {
-    color: #bfa67a;
+    color: var(--main-highlight-color);
   }
   .navbar-nav > li > a.nav-search {
     display: none;

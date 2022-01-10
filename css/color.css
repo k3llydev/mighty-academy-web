@@ -1,5 +1,8 @@
 
 /* Change the color values to your color */
+:root {
+	--main-highlight-color: #ffb666;
+}
 
 a,
 .dropdown-menu > li > a:focus,
@@ -13,7 +16,7 @@ a,
 .works-grid.titles .work-description a:hover,
 #owl-related-works .work-description a:hover,
 .portfolio-description ul > li a:hover {
-	color: #bfa67a;
+	color: var(--main-highlight-color);
 }
 
 .socials a:hover i,
@@ -25,7 +28,7 @@ a,
 .btn.btn-color,
 .btn:hover,
 .socials.footer-socials a:hover i {
-	background-color: #bfa67a;
+	background-color: var(--main-highlight-color);
 }
 
 
@@ -34,7 +37,7 @@ a,
 .navbar-nav > .active > a:focus,
 .navbar-nav > .active > a:hover,
 .menu-socials li > a:hover {
-	color: #bfa67a !important;
+	color: var(--main-highlight-color) !important;
 }
 
 
@@ -56,9 +59,9 @@ input[type="tel"]:focus,
 input[type="time"]:focus,
 input[type="url"]:focus,
 textarea:focus {
-	border-color: #bfa67a;
+	border-color: var(--main-highlight-color);
 }
 
 .dropdown-menu {
-	border-top-color: #bfa67a;
+	border-top-color: var(--main-highlight-color);
 }
