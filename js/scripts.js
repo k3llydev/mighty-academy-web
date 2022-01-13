@@ -500,95 +500,18 @@
 
         var $this = $(this);
         const contactFormData = $('#contact-form').serializeArray().reduce((o,kv) => ({...o, [kv.name]: kv.value}), {});
-        // console.log(contactFormData)
-        fetch(
-            'https://discord.com/api/webhooks/931043943955709973/ckvReM3ujzCvlzJl4XpFUh4maqMjS9GUrdmZYxohFC68YUNOfHN7a5Y_SW-yySOWmhpk',
-            {
-              method: 'post',
-              headers: {
-                'Content-Type': 'application/json',
-              },
-              body: JSON.stringify({
-                // the username to be displayed
-                username: 'Academy Website Form',
-                // the avatar to be displayed
-                avatar_url:
-                  'https://drive.google.com/uc?id=1EhHwitOwZkgeRh3eghbmFxMjkfd9QroC',
-                // contents of the message to be sent
-                // content:
-                //   'user mention: <@279098137484722176>, role mention: <@&496160161459863552>, channel mention: <#508500699458306049>',
-                // enable mentioning of individual users or roles, but not @everyone/@here
-                // allowed_mentions: {
-                //   parse: ['users', 'roles'],
-                // },
-                // embeds to be sent
-                embeds: [
-                  {
-                    // decimal number colour of the side of the embed
-                    color: 12559994,
-                    // author
-                    // - icon next to text at top (text is a link)
-                    author: {
-                      name: 'Mighty Team Academy',
-                      url: 'https://academy.mightyteamesports.com',
-                    //   icon_url: 'https://dragonwocky.me/assets/avatar.jpg',
-                    },
-                    // embed title
-                    // - link on 2nd row
-                    // title: 'title',
-                    // url:
-                    //   'https://gist.github.com/dragonwocky/ea61c8d21db17913a43da92efe0de634',
-                    // thumbnail
-                    // - small image in top right corner.
-                    thumbnail: {
-                      url:
-                        'https://drive.google.com/uc?id=1EhHwitOwZkgeRh3eghbmFxMjkfd9QroC',
-                    },
-                    // embed description
-                    // - text on 3rd row
-                    description: `NUEVO REGISTRO\n**Nombre:** ${contactFormData.name}\n**Motivo:** ${contactFormData.comment}`,
-                    // custom embed fields: bold title/name, normal content/value below title
-                    // - located below description, above image.
-                    fields: [
-                      {
-                        name: 'Juego de interés',
-                        value: contactFormData.videogame,
-                      },
-                      {
-                        name: 'Correo electrónico',
-                        value: contactFormData.mail,
-                      },
-                      {
-                          name: 'Telefono',
-                          value: contactFormData.phone
-                      },
-                      {
-                          name: 'Nacionalidad',
-                          value: contactFormData.nationality
-                      },
-                      {
-                          name: 'Codigo de referido',
-                          value: contactFormData.discountcode || 'No.'
-                      }
-                    ],
-                    // image
-                    // - picture below description(and fields)
-                    // image: {
-                    //   url:
-                    //     'http://tolkiengateway.net/w/images/thumb/7/75/J.R.R._Tolkien_-_Ring_verse.jpg/300px-J.R.R._Tolkien_-_Ring_verse.jpg',
-                    // },
-                    // footer
-                    // - icon next to text at bottom
-                    footer: {
-                      text: `Enviado el: ${new Date().toLocaleDateString()}`,
-                    //   icon_url:
-                    //     'https://cdn.discordapp.com/avatars/411256446638882837/9a12fc7810795ded801fdb0401db0be6.png',
-                    },
-                  },
-                ],
-              }),
-            }
-          ).then(response => {
+        const params = {
+            name: contactFormData.name,
+            comment: contactFormData.comment,
+            videogame: contactFormData.videogame,
+            mail: contactFormData.mail,
+            phone: contactFormData.phone,
+            nationality: contactFormData.nationality,
+            discountcode: contactFormData.discountcode || 'No.'
+        };
+        const query = Object.keys(params).map(k => encodeURIComponent(k) + '=' + encodeURIComponent(params[k])).join('&');
+        const url = 'https://dialyzable-mention.000webhostapp.com/form.php?' + query;
+        fetch(url).then(response => {
             // $this.parents('form').find('input[type=text],input[type=email],textarea,select').filter(':visible').val('');
             message.hide().removeClass('success').removeClass('error').addClass('success').html('Enviado.').fadeIn('slow').delay(5000).fadeOut('slow');
           }).catch(error => {
@@ -597,8 +520,6 @@
     });
 
 })(jQuery);
-
-
 /* Scroll to Top
 -------------------------------------------------------*/
 
