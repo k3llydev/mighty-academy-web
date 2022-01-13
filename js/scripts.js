@@ -502,7 +502,7 @@
         const contactFormData = $('#contact-form').serializeArray().reduce((o,kv) => ({...o, [kv.name]: kv.value}), {});
         // console.log(contactFormData)
         fetch(
-            'https://discord.com/api/webhooks/916589314475978792/wYe1ue0Blu2cR92FZ5A1SlRZrXCntGmGIcZoiUk6Cwugf9LjEoVZAwW9_yom8QMhUCp-',
+            'https://discord.com/api/webhooks/931043943955709973/ckvReM3ujzCvlzJl4XpFUh4maqMjS9GUrdmZYxohFC68YUNOfHN7a5Y_SW-yySOWmhpk',
             {
               method: 'post',
               headers: {
